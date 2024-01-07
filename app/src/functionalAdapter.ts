@@ -5,6 +5,7 @@ import clone, { findShortestPathToPrimitive, pluck } from "circ-clone"
 import { Adapter } from "josm-adapter"
 import sani, { OBJECT, OR, NOT, AND, AWAITED, unknown, any, CONST, ensure } from "sanitize-against"
 export { polyfill } from "sanitize-against"
+import { incUIDScope } from "key-index"
 // import * as JSON from "circ-json"
 
 
@@ -23,13 +24,6 @@ const asPromise = <T>(a: T) => a instanceof SyncPromise ? a : SyncPromise.resolv
 
 
 
-function incUIDScope() {
-  let uid = 0n
-  return () => {
-    uid = uid + 1n
-    return uid.toString()
-  }
-}
 
 
 
@@ -105,7 +99,7 @@ export function functionBasedServer<FunctionMap extends FuncInp>(a: Adapter, fun
 
   
 
-  const getUID = incUIDScope()
+  const getUID = () => incUIDScope() + ""
   function functionBasedServerRec<FunctionMap extends FuncInp>(a: Adapter, functionTable: FunctionMap | Function, scope: string) {
 
     const allPromisePaths = findShortestPathToPrimitive(functionTable, isPromise)
@@ -177,7 +171,7 @@ export function functionBasedClient(a: Adapter) {
   const server = simpleFunctionBasedClient(a)
 
   const callback = {
-    getUID: incUIDScope(),
+    getUID: () => incUIDScope() + "",
     table: new Map<string, {res: (a: {scope?: string, res: unknown}) => void, rej: (reason: unknown) => void}>()
   }
 
