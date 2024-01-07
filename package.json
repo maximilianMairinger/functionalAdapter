@@ -30,12 +30,12 @@
     "url": "git+https://github.com/maximilianMairinger/functionalAdapter.git"
   },
   "keywords": [
-  "functional",
-  "adapter",
-  "ws",
-  "websocket",
-  "worker"
-],
+    "functional",
+    "adapter",
+    "ws",
+    "websocket",
+    "worker"
+  ],
   "author": "maximilianMairinger",
   "license": "ISC",
   "bugs": {
@@ -48,7 +48,7 @@
     "@rollup/plugin-node-resolve": "^15.0.2",
     "@rollup/plugin-typescript": "^11.1.1",
     "@types/jest": "^26.0.15",
-    "@types/node": "^13.13.4",
+    "@types/node": "^20.10.6",
     "builtins": "^5.0.1",
     "concurrently": "^8.0.1",
     "del-cli": "^5.0.0",
@@ -58,14 +58,19 @@
     "mjsify": "^2.0.6",
     "open": "^9.1.0",
     "rollup": "^3.21.7",
+    "tiny-delay": "^1.2.0",
     "tslib": "2.0.0",
     "typescript": "^5.0.4",
     "wait-on": "^7.0.1",
     "webpack-merge": "^5.0.9"
   },
   "dependencies": {
-    "commander": "^10.0.1",
+    "circ-clone": "^2.7.2",
     "colorful-cli-logger": "^1.0.0",
-    "req-package-json": "^2.1.2"
+    "commander": "^10.0.1",
+    "josm-adapter": "^1.1.0",
+    "more-proms": "^1.6.0",
+    "req-package-json": "^2.1.2",
+    "sanitize-against": "^1.5.1"
   }
 }
